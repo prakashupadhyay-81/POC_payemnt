@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+$off-gray: #c5c5c5;
+
+@mixin mg_pd_0 {
+	margin: 0;
+	padding: 0;
+}
+
+@mixin center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+html {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background-color: $off-gray;
+	margin: 10px 15px;
+}
+
+div, h1, ul {
+	@include mg_pd_0
+}
+
+ul {
+	list-style: none;
+}
+
+hr {
+	height: 5px;
+	background: black;
+}
+
+.top {
+	.list {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	
+	.form {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
+
+.table {
+	overflow-x: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid black;
+	border-spacing: 0;
+	
+	thead {
+		tr {
+			th {
+				@include mg_pd_0;
+				text-align: center;
+				border: 1px black solid;
+			}
+		}
+	}
+}
+
+td, th {
+	text-align: center;
+	border: 1px black solid;
+	padding: 8px;
+}
+
+tr:nth-child(even){background-color: #868686}
+
+.center {
+	@include center
+}
