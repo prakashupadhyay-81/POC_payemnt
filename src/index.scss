@@ -104,12 +104,33 @@ table {
 			}
 		}
 	}
+
+	tbody {
+		tr {
+			td {
+				padding: 0;
+				input {
+					border: none;
+					width: 100%;
+					height: 100%;
+					font-size: 20px;
+					font-family: Athelas, sans-serif;
+
+					&:focus {
+						border: none;
+						outline: none;
+					}
+				}
+			}
+		}
+	}
 }
 
 td, th {
 	text-align: center;
 	border: 1px black solid;
 	padding: 8px;
+	height: 20px;
 }
 
 tr:nth-child(even){background-color: #868686}
