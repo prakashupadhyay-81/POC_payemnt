@@ -1,22 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import THead from "./THead";
 import TBody from "./TBody/TBody";
-
-function get_list() {
-	let list_of_instances = []
-	for (let i = 1; i < 26; i++) {
-		list_of_instances.push(i)
-	}
-	return list_of_instances
-}
+import api from "../../Public/api";
+import TFrom from './TForm/TFrom';
 
 function Table(props) {
+	const [data, setData] = useState([]);
+	const [editing, startEditing] = useState(false)
+	
+	function load() {
+		api.get("prod/products").then(
+			res => {
+				setData(res.data.products);
+			}
+		)
+	}
+	
+	function setStartEditing() {
+		setData([]);
+		startEditing(!editing)
+	}
+	
 	return (
 		<div className="table">
 			<table>
-				<THead />
-				<TBody rows={get_list()}/>
+				<THead/>
+				{editing ? <TFrom /> : <TBody rows={data}/>}
 			</table>
+			
+			<div className={"load-button"}>
+				<button onClick={setStartEditing}>{editing ? 'Save' : 'Create'}</button>
+				<button onClick={load}>Load</button>
+			</div>
 		</div>
 	);
 }
